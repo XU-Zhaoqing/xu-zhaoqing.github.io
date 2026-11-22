@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>徐召清 | 四川大学哲学系</title>
+<meta name="description" content="徐召清，四川大学哲学系教授、博士生导师。研究领域：哲学逻辑、形式知识论、逻辑哲学、人工智能哲学。">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#ffffff; --bg-alt:#f7f7f8; --text:#1a1a1a; --muted:#5f6368;
+    --accent:#2c5f8a; --accent-light:#e8f0f7; --card:#ffffff;
+    --border:#e4e4e7; --shadow:0 4px 20px rgba(0,0,0,.06);
+    --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+    --sans:"Segoe UI",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  [data-theme="dark"]{
+    --bg:#111418; --bg-alt:#171b21; --text:#e8eaed; --muted:#9aa0a6;
+    --accent:#7aadd4; --accent-light:#1c2a35; --card:#191e25;
+    --border:#2a3038; --shadow:0 4px 20px rgba(0,0,0,.3);
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); background:var(--bg); color:var(--text);
+    line-height:1.8; transition:background .3s,color .3s;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{width:min(900px,92%);margin:0 auto}
+
+  /* 导航 */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:color-mix(in srgb,var(--bg) 85%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;height:56px;
+  }
+  .logo{font-weight:700;font-size:.95rem;letter-spacing:1px;font-family:var(--serif);flex-shrink:0}
+  .nav-links{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
+  .nav-links a{font-size:.8rem;color:var(--muted);transition:color .2s;text-decoration:none;white-space:nowrap}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-btn{
+    height:32px;min-width:44px;padding:0 .7rem;border-radius:16px;
+    border:1px solid var(--border);background:var(--card);cursor:pointer;
+    font-size:.78rem;font-weight:600;color:var(--text);font-family:var(--sans);
+    display:grid;place-items:center;transition:border-color .2s,color .2s;
+    flex-shrink:0;letter-spacing:.5px;
+  }
+  .nav-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .theme-btn{min-width:34px;width:34px;padding:0;border-radius:50%;font-size:.9rem}
+  .theme-btn:hover{color:var(--text)}
+
+  /* 头部 */
+  .hero{padding:120px 0 50px;border-bottom:1px solid var(--border)}
+  .hero-profile{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
+  .hero-photo{
+    width:120px;height:120px;border-radius:50%;object-fit:cover;
+    border:3px solid var(--accent-light);box-shadow:var(--shadow);
+    flex-shrink:0;
+  }
+  .hero-text{flex:1}
+  .hero-label{
+    font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:.6rem;
+  }
+  .hero h1{
+    font-family:var(--serif);font-size:clamp(2rem,4.5vw,2.8rem);
+    font-weight:700;line-height:1.25;margin-bottom:.5rem;
+  }
+  .hero h1 span{font-weight:400;font-size:.6em;color:var(--muted);margin-left:.5rem}
+  .hero-sub{color:var(--muted);font-size:1rem;max-width:760px}
+  .hero-sub strong{color:var(--accent);font-weight:600}
+  .hero-contact{margin-top:1.2rem;font-size:.9rem;color:var(--muted);display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+
+  /* 区块 */
+  section{padding:56px 0;border-bottom:1px solid var(--border)}
+  section:last-of-type{border-bottom:none}
+  .sec-title{
+    font-family:var(--serif);font-size:1.35rem;font-weight:700;
+    margin-bottom:1.6rem;padding-bottom:.5rem;
+    border-bottom:2px solid var(--accent);display:inline-block;
+  }
+  .sec-title-en{
+    font-family:var(--sans);font-size:.75rem;font-weight:400;
+    color:var(--muted);letter-spacing:1px;margin-left:.6rem;
+  }
+  .sec-title-en:empty{display:none}
+
+  /* 简介与信息 */
+  .bio p{margin-bottom:1rem;color:var(--text)}
+  .bio p:last-child{margin-bottom:0}
+  
+  /* 时间线经历 */
+  .timeline{list-style:none;position:relative;padding-left:1.2rem;margin-top:1rem}
+  .timeline::before{content:"";position:absolute;left:3px;top:6px;bottom:6px;width:2px;background:var(--border)}
+  .timeline li{position:relative;margin-bottom:1rem;font-size:.9rem}
+  .timeline li::before{content:"";position:absolute;left:-1.2rem;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--accent);transform:translateX(3px)}
+  .timeline .time{font-weight:600;color:var(--muted);display:inline-block;min-width:120px}
+  .timeline .desc{display:inline}
+
+  /* 研究 */
+  .research-item{margin-bottom:2.2rem}
+  .research-item:last-child{margin-bottom:0}
+  .research-item h3{
+    font-family:var(--serif);font-size:1.05rem;font-weight:700;
+    margin-bottom:.4rem;
+  }
+  .research-item h3 span{
+    font-family:var(--sans);font-weight:400;font-size:.8rem;
+    color:var(--muted);margin-left:.4rem;
+  }
+  .research-item h3 span:empty{display:none}
+  .research-item p{color:var(--muted);font-size:.92rem}
+
+  /* 团队 */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+  .team-card{
+    background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;
+    padding:1rem 1.2rem;font-size:.9rem;
+  }
+  .team-card .name{font-weight:600;font-size:.95rem;margin-bottom:.2rem}
+  .team-card .role{font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:.3rem}
+  .team-card .info{color:var(--muted);font-size:.82rem;line-height:1.6}
+
+  /* 论著 */
+  .pub-group{margin-bottom:1.8rem}
+  .pub-group:last-child{margin-bottom:0}
+  .pub-group h3{
+    font-size:.9rem;font-weight:600;color:var(--accent);
+    margin-bottom:.8rem;letter-spacing:.5px;
+  }
+  .pub-group h3 .en-inline{font-weight:400;color:var(--muted);font-size:.9em;margin-left:.4rem}
+  .pub-group h3 .en-inline:empty{display:none}
+  .pub-list{list-style:none}
+  .pub-list li{
+    position:relative;padding-left:1.1rem;margin-bottom:1rem;
+    font-size:.9rem;color:var(--text);line-height:1.7;
+  }
+  .pub-list li::before{
+    content:"";position:absolute;left:0;top:.7em;
+    width:5px;height:5px;border-radius:50%;background:var(--accent);
+  }
+  .pub-list li em{font-style:italic;color:var(--muted)}
+  .badge{
+    display:inline-block;font-size:.7rem;font-weight:600;
+    padding:.1rem .45rem;border-radius:4px;margin-left:.4rem;
+    background:var(--accent-light);color:var(--accent);vertical-align:middle;
+  }
+
+  /* 项目 */
+  .project-list{list-style:none;display:grid;gap:.8rem}
+  .project-list li{
+    padding:1rem 1.2rem;background:var(--bg-alt);border-radius:8px;
+    border-left:3px solid var(--accent);font-size:.9rem;
+  }
+  .project-list li .p-title{font-weight:600;display:block;margin-bottom:.1rem}
+  .project-list li .p-meta{color:var(--muted);font-size:.82rem}
+
+  /* 奖项 */
+  .award-group{margin-bottom:1.8rem}
+  .award-group:last-child{margin-bottom:0}
+  .award-group h3{
+    font-size:.9rem;font-weight:600;color:var(--accent);
+    margin-bottom:.7rem;letter-spacing:.5px;
+  }
+  .award-list{list-style:none}
+  .award-list li{
+    position:relative;padding-left:1.1rem;margin-bottom:.75rem;
+    font-size:.9rem;
+  }
+  .award-list li::before{
+    content:"◆";position:absolute;left:0;top:0;
+    font-size:.6rem;color:var(--accent);
+  }
+
+  /* 招生寄语 */
+  .note{
+    background:var(--bg-alt);border-radius:10px;padding:1.6rem 1.8rem;
+    border:1px solid var(--border);font-size:.92rem;color:var(--muted);
+  }
+  .note p{margin-bottom:1rem}
+  .note p:last-child{margin-bottom:0}
+
+  /* 页脚 */
+  footer{padding:2.5rem 0;text-align:center;color:var(--muted);font-size:.8rem}
+
+  /* 响应式 */
+  @media(max-width:768px){
+    .nav-links a{display:none}
+    .hero{padding:100px 0 40px}
+    .hero-profile{flex-direction:column;text-align:center;gap:1rem}
+    .hero-contact{justify-content:center}
+    .timeline .time{display:block;margin-bottom:.1rem}
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+  .reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">徐召清</div>
+    <div class="nav-links">
+      <a href="#bio" data-zh="简介" data-en="About">简介</a>
+      <a href="#experience" data-zh="经历" data-en="Experience">经历</a>
+      <a href="#research" data-zh="研究" data-en="Research">研究</a>
+      <a href="#team" data-zh="团队" data-en="Team">团队</a>
+      <a href="#publications" data-zh="论著" data-en="Publications">论著</a>
+      <a href="#projects" data-zh="项目" data-en="Projects">项目</a>
+      <a href="#teaching" data-zh="教学" data-en="Teaching">教学</a>
+      <a href="#students" data-zh="学生" data-en="Students">学生</a>
+      <a href="#awards" data-zh="奖项" data-en="Awards">奖项</a>
+      <a href="#service" data-zh="服务" data-en="Service">服务</a>
+      <button class="nav-btn" id="langBtn" aria-label="切换语言">EN</button>
+      <button class="nav-btn theme-btn" id="themeBtn" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== 头部 ========== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-profile">
+      <!-- 请将你的照片命名为 photo.jpg 并与 index.html 放在同一目录 -->
+      <img src="photo.jpg" alt="徐召清" class="hero-photo">
+      <div class="hero-text">
+        <div class="hero-label" data-zh="四川大学哲学系" data-en="Department of Philosophy, Sichuan University">四川大学哲学系</div>
+        <h1>徐召清 <span>XU ZHAOQING</span></h1>
+      </div>
+    </div>
+    <p class="hero-sub" data-zh="四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师，四川大学逻辑、科学与文化研究所执行所长，《逻辑与批判性思维》副主编。研究聚焦于<strong>哲学逻辑、形式知识论、逻辑哲学与人工智能哲学</strong>。" data-en="<strong>Professor</strong>, Ph.D. Supervisor, and Postdoctoral Co-supervisor at the Department of Philosophy, Sichuan University; Executive Director of the Institute of Logic, Science and Culture; Associate Editor of <em>Logic and Critical Thinking</em>. Research focuses on <strong>philosophical logic, formal epistemology, philosophy of logic, and philosophy of artificial intelligence</strong>.">四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师，四川大学逻辑、科学与文化研究所执行所长，《逻辑与批判性思维》副主编。研究聚焦于<strong>哲学逻辑、形式知识论、逻辑哲学与人工智能哲学</strong>。</p>
+    <div class="hero-contact">
+      <span>✉️ <a href="mailto:xuzhaoqing@scu.edu.cn">xuzhaoqing@scu.edu.cn</a></span>
+      <span>🔗 <a href="https://philpeople.org/profiles/zhaoqing-xu" target="_blank" rel="noopener">PhilPeople Profile</a></span>
+      <span data-zh="📍 成都市武侯区一环路南一段24号 四川大学哲学系 610065" data-en="📍 Dept. of Philosophy, Sichuan University, No. 24 South Section 1, Yihuan Road, Chengdu 610065">📍 成都市武侯区一环路南一段24号 四川大学哲学系 610065</span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== 简介 ========== -->
+<section id="bio">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="简介" data-en="About">简介</span><span class="sec-title-en" data-zh="ABOUT" data-en="">ABOUT</span></h2>
+    <div class="bio reveal">
+      <p data-zh="徐召清，1985年生，四川资阳人。北京大学哲学学士，北京大学逻辑学专业哲学博士（硕博连读）。美国纽约市立大学和英国牛津大学访问学者。四川省海外高层次留学人才、四川省第十三批学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目、四川大学第十一批双百人才工程等人才项目入选者。马克思主义理论研究和建设工程重点教材《逻辑学》（第三版）修订专家。" data-en="Xu Zhaoqing (b. 1985, Ziyang, Sichuan) holds a B.A. in Philosophy and a Ph.D. in Logic from Peking University. He was a visiting scholar at the City University of New York and the University of Oxford. He is a recipient of multiple talent programs, including Sichuan Provincial Overseas High-Level Talent, the 13th Batch of Sichuan Provincial Academic and Technical Leaders, Tianfu Social Science Elite (Tianfu Qingcheng Program), Sichuan University Young Outstanding Talent Cultivation Program, and the 11th 'Double Hundred' Talent Program at Sichuan University. He is also an expert for the revision of the Marxist Theoretical Research and Construction Project key textbook <em>Logic</em> (3rd Edition).">徐召清，1985年生，四川资阳人。北京大学哲学学士，北京大学逻辑学专业哲学博士（硕博连读）。美国纽约市立大学和英国牛津大学访问学者。四川省海外高层次留学人才、四川省第十三批学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目、四川大学第十一批双百人才工程等人才项目入选者。马克思主义理论研究和建设工程重点教材《逻辑学》（第三版）修订专家。</p>
+      
+      <p data-zh="主要学术兼职：中国逻辑学会常务理事、中国知识论学会常务理事、四川省逻辑学会副会长兼秘书长（法人代表）、中国现代外国哲学学会知识论专业委员会常务理事、中国辩证唯物主义研究会社会认识论专业委员会常务理事、中国人工智能学会终身会员。" data-en="Major academic affiliations: Council Member of the Chinese Logic Society; Council Member of the Chinese Society for Epistemology; Vice President and Secretary-General (Legal Representative) of the Sichuan Logic Society; Council Member of the Epistemology Committee of the Chinese Society for Modern Foreign Philosophy; Council Member of the Social Epistemology Committee of the Chinese Society for Dialectical Materialism; Lifetime Member of the Chinese Association for Artificial Intelligence.">主要学术兼职：中国逻辑学会常务理事、中国知识论学会常务理事、四川省逻辑学会副会长兼秘书长（法人代表）、中国现代外国哲学学会知识论专业委员会常务理事、中国辩证唯物主义研究会社会认识论专业委员会常务理事、中国人工智能学会终身会员。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 经历 ========== -->
+<section id="experience">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="经历" data-en="Experience">经历</span><span class="sec-title-en" data-zh="EXPERIENCE" data-en="">EXPERIENCE</span></h2>
+
+    <h3 style="font-size:1.05rem; margin-bottom:0.8rem; color:var(--accent);" data-zh="工作经历" data-en="Professional Experience">工作经历</h3>
+    <ul class="timeline reveal">
+      <li><span class="time">2024.9 – 至今</span><span class="desc" data-zh="四川大学哲学系教授、博士生导师、博士后合作导师" data-en="Professor, Ph.D. Supervisor, Postdoctoral Co-supervisor, Dept. of Philosophy, SCU">四川大学哲学系教授、博士生导师、博士后合作导师</span></li>
+      <li><span class="time">2021.6 – 2024.9</span><span class="desc" data-zh="四川大学哲学系副教授、博士生导师" data-en="Associate Professor, Ph.D. Supervisor, Dept. of Philosophy, SCU">四川大学哲学系副教授、博士生导师</span></li>
+      <li><span class="time">2019.6 – 2021.6</span><span class="desc" data-zh="四川大学公共管理学院哲学系副教授、硕士生导师" data-en="Associate Professor, M.A. Supervisor, Dept. of Philosophy, SCU">四川大学公共管理学院哲学系副教授、硕士生导师</span></li>
+      <li><span class="time">2018.9 – 2019.9</span><span class="desc" data-zh="英国牛津大学访问学者（合作导师：Timothy Williamson 教授）" data-en="Visiting Scholar, University of Oxford (Supervisor: Prof. Timothy Williamson)">英国牛津大学访问学者（合作导师：Timothy Williamson 教授）</span></li>
+      <li><span class="time">2017.9 – 2019.6</span><span class="desc" data-zh="四川大学公共管理学院哲学系副教授" data-en="Associate Professor, Dept. of Philosophy, SCU">四川大学公共管理学院哲学系副教授</span></li>
+      <li><span class="time">2012.7 – 2017.9</span><span class="desc" data-zh="四川大学公共管理学院哲学系讲师（兼任系主任助理、党支部书记）" data-en="Lecturer, Dept. of Philosophy, SCU (Assistant to Dept. Head, Party Branch Secretary)">四川大学公共管理学院哲学系讲师（兼任系主任助理、党支部书记）</span></li>
+    </ul>
+
+    <h3 style="font-size:1.05rem; margin:1.6rem 0 0.8rem; color:var(--accent);" data-zh="教育经历" data-en="Education">教育经历</h3>
+    <ul class="timeline reveal">
+      <li><span class="time">2010.9 – 2011.8</span><span class="desc" data-zh="美国纽约市立大学（CUNY）联合培养博士生、访问学者（合作导师：Rohit Parikh 教授）" data-en="Visiting Scholar & Joint Ph.D. Student, City University of New York (Supervisor: Prof. Rohit Parikh)">美国纽约市立大学（CUNY）联合培养博士生、访问学者（合作导师：Rohit Parikh 教授）</span></li>
+      <li><span class="time">2007.9 – 2012.7</span><span class="desc" data-zh="北京大学哲学系，逻辑学硕博连读，哲学博士（导师：陈波 教授）" data-en="Ph.D. in Logic (Combined M.A.-Ph.D. program), Peking University (Supervisor: Prof. Chen Bo)">北京大学哲学系，逻辑学硕博连读，哲学博士（导师：陈波 教授）</span></li>
+      <li><span class="time">2005.9 – 2007.7</span><span class="desc" data-zh="北京大学政府管理学院，行政管理，辅修" data-en="Minor in Public Administration, School of Government, Peking University">北京大学政府管理学院，行政管理，辅修</span></li>
+      <li><span class="time">2003.9 – 2007.7</span><span class="desc" data-zh="北京大学哲学系，科学哲学与逻辑学，哲学学士（导师：叶峰 教授）" data-en="B.A. in Philosophy (Philosophy of Science and Logic), Peking University (Supervisor: Prof. Ye Feng)">北京大学哲学系，科学哲学与逻辑学，哲学学士（导师：叶峰 教授）</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 研究 ========== -->
+<section id="research">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="研究" data-en="Research">研究</span><span class="sec-title-en" data-zh="RESEARCH" data-en="">RESEARCH</span></h2>
+
+    <div class="research-item reveal">
+      <h3><span data-zh="哲学逻辑" data-en="Philosophical Logic">哲学逻辑</span> <span data-zh="Philosophical Logic" data-en="">Philosophical Logic</span></h3>
+      <p data-zh="以模态逻辑、认知逻辑与二维语义学为主要工具，处理知识、信念、必然性等基本哲学概念的逻辑结构。代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。" data-en="Using modal logic, epistemic logic, and two-dimensional semantics to analyze the logical structure of knowledge, belief, and necessity. Representative work addresses Kripke's puzzle about belief, the surprise examination paradox, and the nesting problem of two-dimensional semantics.">以模态逻辑、认知逻辑与二维语义学为主要工具，处理知识、信念、必然性等基本哲学概念的逻辑结构。代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。</p>
+    </div>
+
+    <div class="research-item reveal">
+      <h3><span data-zh="形式知识论" data-en="Formal Epistemology">形式知识论</span> <span data-zh="Formal Epistemology" data-en="">Formal Epistemology</span></h3>
+      <p data-zh="聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限，并从“可错性”出发为理解知识的基始性与认知边界提供替代性分析框架。" data-en="Focusing on the limits of knowledge and cognitive transparency, particularly the limitations of the 'cognitive transparency' argument in Williamson's epistemology, and proposing an alternative framework based on fallibility to understand the foundational status and boundaries of knowledge.">聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限，并从“可错性”出发为理解知识的基始性与认知边界提供替代性分析框架。</p>
+    </div>
+
+    <div class="research-item reveal">
+      <h3><span data-zh="逻辑哲学" data-en="Philosophy of Logic">逻辑哲学</span> <span data-zh="Philosophy of Logic" data-en="">Philosophy of Logic</span></h3>
+      <p data-zh="考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。" data-en="Examining the normative foundations of logic, the meaning of logical constants, and the relationship between logic and rational action, with attention to key turning points in the history of logic and the application and reflection of logical methods in the analytic tradition.">考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。</p>
+    </div>
+
+    <div class="research-item reveal">
+      <h3><span data-zh="人工智能哲学" data-en="Philosophy of AI">人工智能哲学</span> <span data-zh="Philosophy of AI" data-en="">Philosophy of AI</span></h3>
+      <p data-zh="将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与AI的交叉地带开展探索性研究。" data-en="Extending insights from formal epistemology to the cognitive transparency of AI, exploring the fallibility, explainability, and philosophical presuppositions of machine cognition at the intersection of logic and AI.">将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与AI的交叉地带开展探索性研究。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 团队 ========== -->
+<section id="team" class="section-alt">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="团队" data-en="Team">团队</span><span class="sec-title-en" data-zh="TEAM" data-en="">TEAM</span></h2>
+    <p style="color:var(--muted); margin-bottom:1.5rem; font-size:.92rem;" data-zh="依托四川大学逻辑、科学与文化研究所（ILSC），与以下同仁及博士后合作开展研究与教学。" data-en="Affiliated with the Institute of Logic, Science and Culture (ILSC) at Sichuan University, collaborating with the following colleagues and postdoctoral researchers.">依托四川大学逻辑、科学与文化研究所（ILSC），与以下同仁及博士后合作开展研究与教学。</p>
+
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="name">任晓明</div>
+        <div class="role" data-zh="研究所所长" data-en="Director, ILSC">研究所所长</div>
+        <div class="info" data-zh="四川大学文科讲席教授，逻辑学与科学哲学方向。" data-en="Chair Professor of Humanities, Sichuan University; Logic and Philosophy of Science.">四川大学文科讲席教授，逻辑学与科学哲学方向。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">徐召清</div>
+        <div class="role" data-zh="执行所长" data-en="Executive Director, ILSC">执行所长</div>
+        <div class="info" data-zh="教授、博导，哲学逻辑、形式知识论、AI哲学。" data-en="Professor; Philosophical Logic, Formal Epistemology, Philosophy of AI.">教授、博导，哲学逻辑、形式知识论、AI哲学。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">刘佶鑫</div>
+        <div class="role" data-zh="秘书长" data-en="Secretary-General, ILSC">秘书长</div>
+        <div class="info" data-zh="逻辑学与科学哲学教研室成员。" data-en="Member of the Logic and Philosophy of Science Teaching & Research Group.">逻辑学与科学哲学教研室成员。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">刘纪琪</div>
+        <div class="role" data-zh="合作教师" data-en="Collaborating Faculty">合作教师</div>
+        <div class="info" data-zh="使真理论、语言哲学、认识论与哲学逻辑。" data-en="Truthmaking theory, philosophy of language, epistemology, and philosophical logic.">使真理论、语言哲学、认识论与哲学逻辑。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">宋子明</div>
+        <div class="role" data-zh="团队成员" data-en="Team Member">团队成员</div>
+        <div class="info" data-zh="四川大学逻辑、科学与文化研究所团队成员。（具体研究方向可在此补充）" data-en="Member of the Institute of Logic, Science and Culture, Sichuan University. (Research areas can be added here.)">四川大学逻辑、科学与文化研究所团队成员。（具体研究方向可在此补充）</div>
+      </div>
+      <div class="team-card">
+        <div class="name">Fabio Ceravolo</div>
+        <div class="role" data-zh="博士后（2025–）" data-en="Postdoc (2025–)">博士后（2025–）</div>
+        <div class="info" data-zh="英国利兹大学哲学博士，现任四川大学哲学系助理研究员。" data-en="Ph.D., University of Leeds; Assistant Researcher, Dept. of Philosophy, SCU.">英国利兹大学哲学博士，现任四川大学哲学系助理研究员。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">陈以森</div>
+        <div class="role" data-zh="博士后（2022–）" data-en="Postdoc (2022–)">博士后（2022–）</div>
+        <div class="info" data-zh="美国加州大学戴维斯分校哲学博士，现任中国台湾东吴大学助理教授。" data-en="Ph.D., UC Davis; Assistant Professor, Soochow University (Taiwan).">美国加州大学戴维斯分校哲学博士，现任中国台湾东吴大学助理教授。</div>
+      </div>
+      <div class="team-card">
+        <div class="name">陈钰</div>
+        <div class="role" data-zh="博士后（2022–）" data-en="Postdoc (2022–)">博士后（2022–）</div>
+        <div class="info" data-zh="清华大学哲学系逻辑学博士，现任江西师范大学讲师。" data-en="Ph.D. in Logic, Tsinghua University; Lecturer, Jiangxi Normal University.">清华大学哲学系逻辑学博士，现任江西师范大学讲师。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 论著 ========== -->
+<section id="publications">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="论著" data-en="Publications">论著</span><span class="sec-title-en" data-zh="PUBLICATIONS" data-en="">PUBLICATIONS</span></h2>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="著作与译著" data-en="Books & Translations">著作与译著</span></h3>
+      <ul class="pub-list">
+        <li data-zh="《众妙之门：逻辑学基础与应用》（教材，主编），四川大学出版社，即将出版。" data-en="<em>The Gate of Wonders: Foundations and Applications of Logic</em> (textbook, editor), Sichuan University Press, forthcoming.">《众妙之门：逻辑学基础与应用》（教材，主编），四川大学出版社，即将出版。</li>
+        <li data-zh="<em>The Problem of Misleading Evidence: A Logical and Experimental Study</em>（专著），Springer，即将出版。" data-en="<em>The Problem of Misleading Evidence: A Logical and Experimental Study</em> (monograph), Springer, forthcoming."><em>The Problem of Misleading Evidence: A Logical and Experimental Study</em>（专著），Springer，即将出版。</li>
+        <li data-zh="《知识及其限度》（全新译本），[英]威廉姆森 著，中国人民大学出版社，即将出版。" data-en="<em>Knowledge and Its Limits</em> (new translation), by Timothy Williamson, Renmin University of China Press, forthcoming.">《知识及其限度》（全新译本），[英]威廉姆森 著，中国人民大学出版社，即将出版。</li>
+        <li data-zh="《苏格拉底式的问答法》（合译），[芬]亨迪卡 著，中国人民大学出版社，即将出版。" data-en="<em>Socratic Epistemology</em> (co-translator), by Jaakko Hintikka, Renmin University of China Press, forthcoming.">《苏格拉底式的问答法》（合译），[芬]亨迪卡 著，中国人民大学出版社，即将出版。</li>
+        <li data-zh="《哲学的哲学》（合译），[英]威廉姆森 著，商务印书馆，即将出版。" data-en="<em>The Philosophy of Philosophy</em> (co-translator), by Timothy Williamson, The Commercial Press, forthcoming.">《哲学的哲学》（合译），[英]威廉姆森 著，商务印书馆，即将出版。</li>
+        <li data-zh="《威廉姆森谈他自己的哲学》（参译），[英]威廉姆森 著，华中科技大学出版社，即将出版。" data-en="<em>Williamson on His Own Philosophy</em> (co-translator), by Timothy Williamson, Huazhong University of Science and Technology Press, forthcoming.">《威廉姆森谈他自己的哲学》（参译），[英]威廉姆森 著，华中科技大学出版社，即将出版。</li>
+        <li data-zh="《哲学的困惑》（合译），[美]克里普克 著，上海人民出版社，2024年。" data-en="<em>Philosophical Troubles</em> (co-translator), by Saul Kripke, Shanghai People's Publishing House, 2024.">《哲学的困惑》（合译），[美]克里普克 著，上海人民出版社，2024年。</li>
+        <li data-zh="《分析哲学的故事》（合译），广西师范大学出版社，2023年。" data-en="<em>The Story of Analytic Philosophy</em> (co-translator), Guangxi Normal University Press, 2023.">《分析哲学的故事》（合译），广西师范大学出版社，2023年。</li>
+        <li data-zh="《哲学的方法：蒂莫西·威廉姆森北大讲演录》（主编，第一译者），中国人民大学出版社，2023年。" data-en="<em>Methods of Philosophy: Timothy Williamson's Lectures at Peking University</em> (editor & first translator), Renmin University of China Press, 2023.">《哲学的方法：蒂莫西·威廉姆森北大讲演录》（主编，第一译者），中国人民大学出版社，2023年。</li>
+        <li data-zh="《悖论：根源、范围及其消解》（第二译者），中国人民大学出版社，2021年。" data-en="<em>Paradoxes: Their Roots, Range, and Resolution</em> (second translator), Renmin University of China Press, 2021.">《悖论：根源、范围及其消解》（第二译者），中国人民大学出版社，2021年。</li>
+        <li data-zh="《分析哲学——批评与建构》（合著），中国人民大学出版社，2018年。" data-en="<em>Analytic Philosophy: Criticism and Construction</em> (co-author), Renmin University of China Press, 2018.">《分析哲学——批评与建构》（合著），中国人民大学出版社，2018年。</li>
+        <li data-zh="《分析哲学——回顾与反省》（第二版，合译），中国人民大学出版社，2018年。" data-en="<em>Analytic Philosophy: Retrospect and Reflection</em> (2nd ed., co-translator), Renmin University of China Press, 2018.">《分析哲学——回顾与反省》（第二版，合译），中国人民大学出版社，2018年。</li>
+        <li data-zh="《逻辑与哲学的交融》（合译），社会科学文献出版社，2018年。" data-en="<em>The Integration of Logic and Philosophy</em> (co-translator), Social Sciences Academic Press, 2018.">《逻辑与哲学的交融》（合译），社会科学文献出版社，2018年。</li>
+        <li data-zh="《对与错的真相——四人对话录》（译著），上海人民出版社，2017年。" data-en="<em>The Truth About Right and Wrong: A Dialogue in Four Voices</em> (translator), Shanghai People's Publishing House, 2017.">《对与错的真相——四人对话录》（译著），上海人民出版社，2017年。</li>
+        <li data-zh="《简明逻辑学导论》（第10版，合译），世界图书出版公司，2010年。" data-en="<em>A Concise Introduction to Logic</em> (10th ed., co-translator), World Publishing Corporation, 2010.">《简明逻辑学导论》（第10版，合译），世界图书出版公司，2010年。</li>
+      </ul>
+    </div>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="代表性学术论文" data-en="Selected Papers">代表性学术论文</span></h3>
+      <ul class="pub-list">
+        <li data-zh="知识限度的逻辑分析，《江淮论坛》，2024年第5期，50-57页。人大复印资料《逻辑》全文转载，2025年第3期。（CSSCI）" data-en="'A Logical Analysis of the Limits of Knowledge,' <em>Jianghuai Tribune</em>, No. 5, 2024, pp. 50-57. (CSSCI; reprinted in <em>Logic</em>, RUC Press, No. 3, 2025)">知识限度的逻辑分析，《江淮论坛》，2024年第5期，50-57页。人大复印资料《逻辑》全文转载，2025年第3期。<span class="badge">CSSCI</span></li>
+        <li data-zh="如何理解知识的基始性？《自然辩证法研究》，2022年第9期，3-11页。《高等学校文科学术文摘》学术卡片，2022年第6期。（CSSCI）" data-en="'How to Understand the Foundational Status of Knowledge?' <em>Studies in Dialectics of Nature</em>, No. 9, 2022, pp. 3-11. (CSSCI; abstracted in <em>Higher Education Academic Digest</em>, No. 6, 2022)">如何理解知识的基始性？《自然辩证法研究》，2022年第9期，3-11页。《高等学校文科学术文摘》学术卡片，2022年第6期。<span class="badge">CSSCI</span></li>
+        <li data-zh="新中国以来我国西南地区逻辑教育发展研究——以四川大学为例（合著），《逻辑学研究》，2022年第6A期，79-91页。（CSSCI）" data-en="'A Study on the Development of Logic Education in Southwest China since the Founding of PRC: A Case Study of Sichuan University' (co-author), <em>Studies in Logic</em>, No. 6A, 2022, pp. 79-91. (CSSCI)">新中国以来我国西南地区逻辑教育发展研究——以四川大学为例（合著），《逻辑学研究》，2022年第6A期，79-91页。<span class="badge">CSSCI</span></li>
+        <li data-zh="The Nesting Problem of Two-Dimensional Semantics, <em>The Philosophical Forum</em>, 2021, 52(2): 177-183." data-en="The Nesting Problem of Two-Dimensional Semantics, <em>The Philosophical Forum</em>, 2021, 52(2): 177-183.">The Nesting Problem of Two-Dimensional Semantics, <em>The Philosophical Forum</em>, 2021, 52(2): 177-183. <span class="badge">A&amp;HCI</span></li>
+        <li data-zh="书评：蒂莫西·威廉姆森，《作为形上学的模态逻辑》，《哲学与文化》，2020年第8期，117-122页。" data-en="'Book Review: Timothy Williamson, <em>Modal Logic as Metaphysics</em>,' <em>Philosophy and Culture</em>, No. 8, 2020, pp. 117-122.">书评：蒂莫西·威廉姆森，《作为形上学的模态逻辑》，《哲学与文化》，2020年第8期，117-122页。 <span class="badge">A&amp;HCI</span></li>
+        <li data-zh="On the Factivity Problem of Epistemic Contextualism. In Liao B., Wáng Y. (eds) <em>Context, Conflict and Reasoning</em>. Springer, 2020, pp. 63-74." data-en="On the Factivity Problem of Epistemic Contextualism. In Liao B., Wáng Y. (eds) <em>Context, Conflict and Reasoning</em>. Springer, 2020, pp. 63-74.">On the Factivity Problem of Epistemic Contextualism. In Liao B., Wáng Y. (eds) <em>Context, Conflict and Reasoning</em>. Springer, 2020, pp. 63-74.</li>
+        <li data-zh="容差性、模糊性和连锁悖论，《哲学门》（第38辑），2019年，249-264页。（CSSCI）" data-en="'Tolerance, Vagueness, and the Sorites Paradox,' <em>Philosophical Gate</em>, Vol. 38, 2019, pp. 249-264. (CSSCI)">容差性、模糊性和连锁悖论，《哲学门》（第38辑），2019年，249-264页。<span class="badge">CSSCI</span></li>
+        <li data-zh="A Solution to Kripke's Puzzle about Time and Thought, <em>The Philosophical Forum</em>, 2019, 50(2): 239-244." data-en="A Solution to Kripke's Puzzle about Time and Thought, <em>The Philosophical Forum</em>, 2019, 50(2): 239-244.">A Solution to Kripke's Puzzle about Time and Thought, <em>The Philosophical Forum</em>, 2019, 50(2): 239-244. <span class="badge">A&amp;HCI</span></li>
+        <li data-zh="Epistemic Logic with Evidence and Relevant Alternatives. In <em>Outstanding Contributions to Logic: Jaakko Hintikka on Knowledge and Game-Theoretical Semantics</em>, Springer, 2018, pp. 535-555.（第一作者）" data-en="Epistemic Logic with Evidence and Relevant Alternatives. In <em>Outstanding Contributions to Logic: Jaakko Hintikka on Knowledge and Game-Theoretical Semantics</em>, Springer, 2018, pp. 535-555. (First author)">Epistemic Logic with Evidence and Relevant Alternatives. In <em>Outstanding Contributions to Logic: Jaakko Hintikka on Knowledge and Game-Theoretical Semantics</em>, Springer, 2018, pp. 535-555.（第一作者）</li>
+        <li data-zh="克里普克的信念之谜，《哲学门》（第35辑），2017年，209-223页。（CSSCI）" data-en="'Kripke's Puzzle about Belief,' <em>Philosophical Gate</em>, Vol. 35, 2017, pp. 209-223. (CSSCI)">克里普克的信念之谜，《哲学门》（第35辑），2017年，209-223页。<span class="badge">CSSCI</span></li>
+        <li data-zh="知识的事实性：预设vs.语用隐含，《湖北大学学报》（哲学社会科学版），2017年第4期，22-29页。（CSSCI）" data-en="'The Factivity of Knowledge: Presupposition vs. Pragmatic Implicature,' <em>Journal of Hubei University</em>, No. 4, 2017, pp. 22-29. (CSSCI)">知识的事实性：预设vs.语用隐含，《湖北大学学报》（哲学社会科学版），2017年第4期，22-29页。<span class="badge">CSSCI</span></li>
+        <li data-zh="威廉姆森对先验-后验之分的两个挑战，《自然辩证法研究》，2017年第3期，9-15页。人大复印资料《科学技术哲学》全文转载，2017年第10期。（CSSCI）" data-en="'Williamson's Two Challenges to the A Priori-A Posteriori Distinction,' <em>Studies in Dialectics of Nature</em>, No. 3, 2017, pp. 9-15. (CSSCI; reprinted in <em>Philosophy of Science and Technology</em>, RUC Press, No. 10, 2017)">威廉姆森对先验-后验之分的两个挑战，《自然辩证法研究》，2017年第3期，9-15页。人大复印资料《科学技术哲学》全文转载，2017年第10期。<span class="badge">CSSCI</span></li>
+        <li data-zh="克里普克论意外考试悖论，《河南社会科学》，2016年第8期，71-76页。人大复印资料《逻辑》全文转载，2017年第1期。（CSSCI）" data-en="'Kripke on the Surprise Examination Paradox,' <em>Henan Social Sciences</em>, No. 8, 2016, pp. 71-76. (CSSCI; reprinted in <em>Logic</em>, RUC Press, No. 1, 2017)">克里普克论意外考试悖论，《河南社会科学》，2016年第8期，71-76页。人大复印资料《逻辑》全文转载，2017年第1期。<span class="badge">CSSCI</span></li>
+        <li data-zh="Williamson's Challenges to the A Priori-A Posteriori Distinction, <em>The Philosophical Forum</em>, 2016, 47(3-4): 309-324." data-en="Williamson's Challenges to the A Priori-A Posteriori Distinction, <em>The Philosophical Forum</em>, 2016, 47(3-4): 309-324.">Williamson's Challenges to the A Priori-A Posteriori Distinction, <em>The Philosophical Forum</em>, 2016, 47(3-4): 309-324. <span class="badge">A&amp;HCI</span></li>
+        <li data-zh="On Kripke's Dogmatism Paradox: A Logical Dynamical Analysis, <em>Frontiers of Philosophy in China</em>, 2015, 10(2): 298-310." data-en="On Kripke's Dogmatism Paradox: A Logical Dynamical Analysis, <em>Frontiers of Philosophy in China</em>, 2015, 10(2): 298-310.">On Kripke's Dogmatism Paradox: A Logical Dynamical Analysis, <em>Frontiers of Philosophy in China</em>, 2015, 10(2): 298-310.</li>
+        <li data-zh="克里普克的时间与思想之谜，《湖北大学学报》（哲学社会科学版），2015年第3期，32-37页。（CSSCI）" data-en="'Kripke's Puzzle about Time and Thought,' <em>Journal of Hubei University</em>, No. 3, 2015, pp. 32-37. (CSSCI)">克里普克的时间与思想之谜，《湖北大学学报》（哲学社会科学版），2015年第3期，32-37页。<span class="badge">CSSCI</span></li>
+        <li data-zh="Knowledge, Presupposition and Pragmatic Implicature, <em>Frontiers of Philosophy in China</em>, 2013, 8(4): 670-682." data-en="Knowledge, Presupposition and Pragmatic Implicature, <em>Frontiers of Philosophy in China</em>, 2013, 8(4): 670-682.">Knowledge, Presupposition and Pragmatic Implicature, <em>Frontiers of Philosophy in China</em>, 2013, 8(4): 670-682.</li>
+        <li data-zh="认知疑难及其解决，《哲学门》（第23辑），2011年，295-318页。人大复印资料《逻辑》全文转载，2012年第1期。（CSSCI）" data-en="'Epistemic Puzzles and Their Resolution,' <em>Philosophical Gate</em>, Vol. 23, 2011, pp. 295-318. (CSSCI; reprinted in <em>Logic</em>, RUC Press, No. 1, 2012)">认知疑难及其解决，《哲学门》（第23辑），2011年，295-318页。人大复印资料《逻辑》全文转载，2012年第1期。<span class="badge">CSSCI</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 项目 ========== -->
+<section id="projects">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="项目" data-en="Projects">项目</span><span class="sec-title-en" data-zh="PROJECTS" data-en="">PROJECTS</span></h2>
+    
+    <div class="pub-group reveal">
+      <h3><span data-zh="主持科研项目（部分）" data-en="PI, Selected Research Projects">主持科研项目（部分）</span></h3>
+      <ul class="project-list">
+        <li>
+          <span class="p-title" data-zh="国家社科基金重点项目" data-en="Key Project, National Social Science Fund">国家社科基金重点项目</span>
+          <span class="p-meta" data-zh="交叉学科视域下的知识优先认识论研究（26AZX018，在研）" data-en="A Study of Knowledge-First Epistemology from an Interdisciplinary Perspective (26AZX018, ongoing)">交叉学科视域下的知识优先认识论研究（26AZX018，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="四川省社科基金重点项目" data-en="Key Project, Sichuan Provincial Social Science Fund">四川省社科基金重点项目</span>
+          <span class="p-meta" data-zh="当代逻辑与人工智能哲学前沿问题研究（SCJJ24ND022，在研）" data-en="Frontier Issues in Contemporary Logic and Philosophy of AI (SCJJ24ND022, ongoing)">当代逻辑与人工智能哲学前沿问题研究（SCJJ24ND022，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="成都市哲学社会科学规划年度项目" data-en="Chengdu Philosophy and Social Science Planning Project">成都市哲学社会科学规划年度项目</span>
+          <span class="p-meta" data-zh="逻辑学与人工智能哲学前沿问题研究（2025AS014，在研）" data-en="Frontier Issues in Logic and Philosophy of AI (2025AS014, ongoing)">逻辑学与人工智能哲学前沿问题研究（2025AS014，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="四川大学“从0到1”创新研究项目" data-en="'From 0 to 1' Innovation Research Project, SCU">四川大学“从0到1”创新研究项目</span>
+          <span class="p-meta" data-zh="逻辑与元逻辑的关系研究（2022CX33，在研）" data-en="Research on the Relationship between Logic and Metalogic (2022CX33, ongoing)">逻辑与元逻辑的关系研究（2022CX33，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="四川大学青年杰出人才培育项目" data-en="SCU Young Outstanding Talent Cultivation Program">四川大学青年杰出人才培育项目</span>
+          <span class="p-meta" data-zh="知识优先的逻辑基础与应用研究（SKSYL2023-07，在研）" data-en="The Logical Foundations and Applications of Knowledge-First (SKSYL2023-07, ongoing)">知识优先的逻辑基础与应用研究（SKSYL2023-07，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="国家社科基金青年项目" data-en="Youth Project, National Social Science Fund">国家社科基金青年项目</span>
+          <span class="p-meta" data-zh="基于现代认知逻辑的形式知识论研究（18CZX063，已结项）" data-en="A Study in Formal Epistemology Based on Modern Epistemic Logic (18CZX063, completed)">基于现代认知逻辑的形式知识论研究（18CZX063，已结项）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="四川大学创新火花重点项目" data-en="SCU Innovation Spark Key Project">四川大学创新火花重点项目</span>
+          <span class="p-meta" data-zh="知识优先的认知可能性理论（2018hhs-50，已结项）" data-en="Knowledge-First Theory of Epistemic Possibility (2018hhs-50, completed)">知识优先的认知可能性理论（2018hhs-50，已结项）</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="参与国家级/省部级重大项目（部分）" data-en="Participant, Selected Major/Key Projects">参与国家级/省部级重大项目（部分）</span></h3>
+      <ul class="project-list">
+        <li>
+          <span class="p-title" data-zh="教育部哲学社会科学研究重大课题攻关项目" data-en="Major Project of the Ministry of Education">教育部哲学社会科学研究重大课题攻关项目</span>
+          <span class="p-meta" data-zh="具身人工智能的哲学基础问题研究（25JZD008，在研）" data-en="Philosophical Foundations of Embodied AI (25JZD008, ongoing)">具身人工智能的哲学基础问题研究（25JZD008，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="国家社科基金重大项目" data-en="Major Project, National Social Science Fund">国家社科基金重大项目</span>
+          <span class="p-meta" data-zh="不确定性推理的逻辑及其应用研究（24&ZD227，在研）" data-en="Logic of Uncertain Reasoning and Its Applications (24&ZD227, ongoing)">不确定性推理的逻辑及其应用研究（24&ZD227，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="国家社科基金重大项目" data-en="Major Project, National Social Science Fund">国家社科基金重大项目</span>
+          <span class="p-meta" data-zh="逻辑词汇的历史演进与哲学问题研究（20&ZD046，在研）" data-en="Historical Evolution and Philosophical Problems of Logical Vocabulary (20&ZD046, ongoing)">逻辑词汇的历史演进与哲学问题研究（20&ZD046，在研）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="国家社科基金重大项目" data-en="Major Project, National Social Science Fund">国家社科基金重大项目</span>
+          <span class="p-meta" data-zh="当代逻辑哲学重大前沿问题研究（17ZDA024，已结项，优秀）" data-en="Major Frontier Issues in Contemporary Philosophy of Logic (17ZDA024, completed, Excellent)">当代逻辑哲学重大前沿问题研究（17ZDA024，已结项，优秀）</span>
+        </li>
+        <li>
+          <span class="p-title" data-zh="国家社科基金重点项目" data-en="Key Project, National Social Science Fund">国家社科基金重点项目</span>
+          <span class="p-meta" data-zh="分析哲学若干基本理论问题新探（12AZD072，已结项，优秀）" data-en="New Explorations into Fundamental Theoretical Issues of Analytic Philosophy (12AZD072, completed, Excellent)">分析哲学若干基本理论问题新探（12AZD072，已结项，优秀）</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 教学 ========== -->
+<section id="teaching">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="教学" data-en="Teaching">教学</span><span class="sec-title-en" data-zh="TEACHING" data-en="">TEACHING</span></h2>
+    <div class="note reveal" style="margin-bottom:1.5rem;">
+      <p data-zh="先后主讲《逻辑学基础》《逻辑学导论》《数理逻辑》《哲学逻辑》《人工智能哲学》《逻辑与批判性思维》《悖论研究》等10多门本、硕、博专业和通识课程。主持本科和研究生教改项目4项。主持四川大学通识教育核心课程及配套精品在线课程《理性之道：逻辑学思想与历程》。参与马克思主义理论研究和建设工程重点教材《逻辑学》（第三版）修订。" data-en="Has taught over 10 undergraduate, graduate, and general education courses, including <em>Foundations of Logic</em>, <em>Introduction to Logic</em>, <em>Mathematical Logic</em>, <em>Philosophical Logic</em>, <em>Philosophy of AI</em>, <em>Logic and Critical Thinking</em>, and <em>Studies in Paradoxes</em>. Led 4 undergraduate and graduate teaching reform projects. PI for the SCU General Education Core Course and the accompanying online course <em>The Way of Reason: Logical Thought and Its History</em>. Participated in the revision of the Marxist Theoretical Research and Construction Project key textbook <em>Logic</em> (3rd Edition).">先后主讲《逻辑学基础》《逻辑学导论》《数理逻辑》《哲学逻辑》《人工智能哲学》《逻辑与批判性思维》《悖论研究》等10多门本、硕、博专业和通识课程。主持本科和研究生教改项目4项。主持四川大学通识教育核心课程及配套精品在线课程《理性之道：逻辑学思想与历程》。参与马克思主义理论研究和建设工程重点教材《逻辑学》（第三版）修订。</p>
+    </div>
+
+    <h3 style="font-size:.9rem;font-weight:600;color:var(--accent);margin:1.5rem 0 .8rem;" data-zh="主持教学改革项目（部分）" data-en="Selected Teaching Reform Projects (PI)">主持教学改革项目（部分）</h3>
+    <ul class="award-list reveal">
+      <li data-zh="四川大学通识教育核心课程建设项目：《众妙之门：逻辑学基础与应用》（已结项）" data-en="SCU General Education Core Course: <em>The Gate of Wonders: Foundations and Applications of Logic</em> (completed)">四川大学通识教育核心课程建设项目：《众妙之门：逻辑学基础与应用》（已结项）</li>
+      <li data-zh="四川大学哲学系高水平在线课程建设项目：“理性之道：逻辑学思想与历程”（15万，已结项）" data-en="SCU Dept. of Philosophy High-Level Online Course: <em>The Way of Reason</em> (150k RMB, completed)">四川大学哲学系高水平在线课程建设项目：“理性之道：逻辑学思想与历程”（15万，已结项）</li>
+      <li data-zh="四川大学研究生教学改革研究重点项目：“科教融合培养哲学创新人才的研究与实践”（已结项）" data-en="SCU Graduate Teaching Reform Key Project: Research and Practice in Cultivating Philosophical Innovators through Sci-Edu Integration (completed)">四川大学研究生教学改革研究重点项目：“科教融合培养哲学创新人才的研究与实践”（已结项）</li>
+      <li data-zh="四川大学立项建设教材项目：《众妙之门：逻辑学基础与应用》（在研）" data-en="SCU Textbook Construction Project: <em>The Gate of Wonders</em> (ongoing)">四川大学立项建设教材项目：《众妙之门：逻辑学基础与应用》（在研）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 学生 ========== -->
+<section id="students" class="section-alt">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="学生" data-en="Students">学生</span><span class="sec-title-en" data-zh="STUDENTS" data-en="">STUDENTS</span></h2>
+    <p style="color:var(--muted); font-size:.9rem; margin-bottom:1.5rem;" data-zh="指导博士生、硕士生及本科生。部分学生获优秀毕业论文、国家奖学金等荣誉。" data-en="Supervises Ph.D., M.A., and undergraduate students. Some students have received awards for outstanding theses and national scholarships.">指导博士生、硕士生及本科生。部分学生获优秀毕业论文、国家奖学金等荣誉。</p>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="博士研究生" data-en="Ph.D. Students">博士研究生</span></h3>
+      <ul class="pub-list">
+        <li>纪成蓉（逻辑，2022）、万满益（逻辑，2023）、张德华（逻辑，2025）、史艺杰（科哲，2025）、吴天壤（科哲，2026）。</li>
+      </ul>
+    </div>
+    <div class="pub-group reveal">
+      <h3><span data-zh="硕士研究生（部分）" data-en="M.A. Students (Selected)">硕士研究生（部分）</span></h3>
+      <ul class="pub-list">
+        <li>黄俊翔（逻辑，2021）、余芝乐（逻辑，2021）、曾蕾丹（逻辑，2022）、刘毕成（逻辑，2022）、吕远鹏（逻辑，2024）、黄潇（逻辑，2025）、于泽恺（逻辑，2026）等。</li>
+      </ul>
+    </div>
+    <div class="pub-group reveal">
+      <h3><span data-zh="本科生（部分）" data-en="Undergraduate Students (Selected)">本科生（部分）</span></h3>
+      <ul class="pub-list">
+        <li>郝建宇（2012，优秀毕业论文）、欧阳文飞（2019，优秀毕业论文一等奖）、唐家蕊（2021，国家奖学金）、杜政毅（2023，国家奖学金）、代磊磊（2022，优秀毕业论文）等。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 奖项与荣誉 ========== -->
+<section id="awards">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="奖项与荣誉" data-en="Awards &amp; Honors">奖项与荣誉</span><span class="sec-title-en" data-zh="AWARDS &amp; HONORS" data-en="">AWARDS &amp; HONORS</span></h2>
+
+    <div class="award-group reveal">
+      <h3><span data-zh="科研获奖" data-en="Research Awards">科研获奖</span></h3>
+      <ul class="award-list">
+        <li data-zh="四川省第二十次社会科学优秀成果三等奖（独立，2025）" data-en="Third Prize, 20th Sichuan Provincial Philosophy and Social Sciences Outstanding Achievement Award (sole author, 2025)">四川省第二十次社会科学优秀成果三等奖（独立，2025）</li>
+        <li data-zh="北京市第十六届哲学社会科学优秀成果二等奖（排名第四，2021）" data-en="Second Prize, 16th Beijing Municipal Philosophy and Social Sciences Outstanding Achievement Award (ranked 4th, 2021)">北京市第十六届哲学社会科学优秀成果二等奖（排名第四，2021）</li>
+        <li data-zh="四川大学哲学社会科学优秀成果奖（2020）" data-en="SCU Philosophy and Social Sciences Outstanding Achievement Award (2020)">四川大学哲学社会科学优秀成果奖（2020）</li>
+        <li data-zh="四川大学哲学社会科学重要成果奖（2019）" data-en="SCU Philosophy and Social Sciences Important Achievement Award (2019)">四川大学哲学社会科学重要成果奖（2019）</li>
+      </ul>
+    </div>
+
+    <div class="award-group reveal">
+      <h3><span data-zh="教学获奖" data-en="Teaching Awards">教学获奖</span></h3>
+      <ul class="award-list">
+        <li data-zh="四川大学姜维平优秀教学奖“课程建设奖”（2026）" data-en="Jiang Weiping Outstanding Teaching Award - Course Construction Award, SCU (2026)">四川大学姜维平优秀教学奖“课程建设奖”（2026）</li>
+        <li data-zh="四川省优质研究生课程（负责人，2025）" data-en="Sichuan Provincial High-Quality Graduate Course (PI, 2025)">四川省优质研究生课程（负责人，2025）</li>
+        <li data-zh="四川大学研究生教学成果一等奖（2025）" data-en="First Prize for Graduate Teaching Achievement, SCU (2025)">四川大学研究生教学成果一等奖（2025）</li>
+        <li data-zh="四川大学第九届教师教学创新竞赛（正高组）优胜奖（2026）" data-en="Excellence Award, 9th Teaching Innovation Competition (Senior Category), SCU (2026)">四川大学第九届教师教学创新竞赛（正高组）优胜奖（2026）</li>
+        <li data-zh="四川大学优秀本科毕业论文一等奖指导教师（2023）" data-en="First Prize for Outstanding Undergraduate Thesis Supervisor, SCU (2023)">四川大学优秀本科毕业论文一等奖指导教师（2023）</li>
+        <li data-zh="四川大学课堂教学质量优秀奖（2022）" data-en="Outstanding Classroom Teaching Quality Award, SCU (2022)">四川大学课堂教学质量优秀奖（2022）</li>
+        <li data-zh="四川大学拔尖创新人才培养优秀指导教师（2020、2021、2022）" data-en="Outstanding Advisor for Top-Notch Innovative Talent Cultivation, SCU (2020, 2021, 2022)">四川大学拔尖创新人才培养优秀指导教师（2020、2021、2022）</li>
+        <li data-zh="四川大学本科教学质量优秀奖（2021）" data-en="Outstanding Undergraduate Teaching Quality Award, SCU (2021)">四川大学本科教学质量优秀奖（2021）</li>
+        <li data-zh="四川大学优秀本科毕业论文二等奖指导教师（2017）" data-en="Second Prize for Outstanding Undergraduate Thesis Supervisor, SCU (2017)">四川大学优秀本科毕业论文二等奖指导教师（2017）</li>
+      </ul>
+    </div>
+
+    <div class="award-group reveal">
+      <h3><span data-zh="荣誉与人才计划" data-en="Honors &amp; Talent Programs">荣誉与人才计划</span></h3>
+      <ul class="award-list">
+        <li data-zh="四川省“天府青城计划”天府社科菁英（2021）" data-en="Tianfu Social Science Elite, 'Tianfu Qingcheng Program', Sichuan Province (2021)">四川省“天府青城计划”天府社科菁英（2021）</li>
+        <li data-zh="四川省第十三批学术和技术带头人后备人选（2021）" data-en="Candidate, 13th Batch of Sichuan Provincial Academic and Technical Leaders (2021)">四川省第十三批学术和技术带头人后备人选（2021）</li>
+        <li data-zh="四川省海外高层次留学人才（2020）" data-en="Sichuan Provincial Overseas High-Level Talent (2020)">四川省海外高层次留学人才（2020）</li>
+        <li data-zh="四川大学第十一批“双百人才工程”（2024）" data-en="11th 'Double Hundred' Talent Program, SCU (2024)">四川大学第十一批“双百人才工程”（2024）</li>
+        <li data-zh="四川大学青年杰出人才培育项目（2023）" data-en="SCU Young Outstanding Talent Cultivation Program (2023)">四川大学青年杰出人才培育项目（2023）</li>
+        <li data-zh="四川大学“好未来”优秀学者二等奖（2019）" data-en="'TAL' Outstanding Scholar Second Prize, SCU (2019)">四川大学“好未来”优秀学者二等奖（2019）</li>
+        <li data-zh="四川大学“五粮春”青年社科之星（2019）" data-en="'Wuliangchun' Young Social Science Star, SCU (2019)">四川大学“五粮春”青年社科之星（2019）</li>
+        <li data-zh="四川大学优秀人文社科人才奖（2019）" data-en="SCU Outstanding Humanities and Social Sciences Talent Award (2019)">四川大学优秀人文社科人才奖（2019）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 公共服务与学术服务 ========== -->
+<section id="service" class="section-alt">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="公共服务与学术服务" data-en="Public &amp; Academic Service">公共服务与学术服务</span><span class="sec-title-en" data-zh="SERVICE" data-en="">SERVICE</span></h2>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="学术组织与期刊" data-en="Academic Organizations & Journals">学术组织与期刊</span></h3>
+      <ul class="pub-list">
+        <li data-zh="中国逻辑学会常务理事；中国知识论学会常务理事；四川省逻辑学会副会长兼秘书长（法人代表）。" data-en="Council Member, Chinese Logic Society; Council Member, Chinese Society for Epistemology; Vice President & Secretary-General (Legal Representative), Sichuan Logic Society.">中国逻辑学会常务理事；中国知识论学会常务理事；四川省逻辑学会副会长兼秘书长（法人代表）。</li>
+        <li data-zh="《逻辑与批判性思维》副主编；《哲学评鉴》编委（2020–2023）；《社会科学研究》青年编委。" data-en="Associate Editor, <em>Logic and Critical Thinking</em>; Editorial Board Member, <em>Philosophical Review</em> (2020–2023); Young Editorial Board Member, <em>Social Science Research</em>.">《逻辑与批判性思维》副主编；《哲学评鉴》编委（2020–2023）；《社会科学研究》青年编委。</li>
+        <li data-zh="《哲学研究》《逻辑学研究》《哲学与文化》《自然辩证法通讯》、<em>Frontiers of Philosophy in China</em> 等期刊审稿专家。" data-en="Reviewer for <em>Philosophical Research</em>, <em>Studies in Logic</em>, <em>Philosophy and Culture</em>, <em>Journal of Dialectics of Nature</em>, <em>Frontiers of Philosophy in China</em>, etc.">《哲学研究》《逻辑学研究》《哲学与文化》《自然辩证法通讯》、<em>Frontiers of Philosophy in China</em> 等期刊审稿专家。</li>
+      </ul>
+    </div>
+
+    <div class="pub-group reveal">
+      <h3><span data-zh="公共服务与学术活动" data-en="Public Service & Academic Activities">公共服务与学术活动</span></h3>
+      <ul class="pub-list">
+        <li data-zh="曾任四川大学哲学系学分制导师、玉章书院驻院导师、逻辑学硕士点负责人、哲学强基计划执行主任。" data-en="Former credit-system tutor, resident tutor at Yuzhang College, Head of the Logic M.A. Program, and Executive Director of the Philosophy Strong Foundation Program at SCU.">曾任四川大学哲学系学分制导师、玉章书院驻院导师、逻辑学硕士点负责人、哲学强基计划执行主任。</li>
+        <li data-zh="主办/主持“逻辑、科学与文化”高端论坛、全国现代逻辑学术会议、逻辑理性与互动国际会议（LORI-XI）等；长期主持“逻辑、认知与互动”系列讲座。" data-en="Organized/hosted the 'Logic, Science and Culture' Forum, National Conference on Modern Logic, LORI-XI, and the long-running 'Logic, Cognition and Interaction' lecture series.">主办/主持“逻辑、科学与文化”高端论坛、全国现代逻辑学术会议、逻辑理性与互动国际会议（LORI-XI）等；长期主持“逻辑、认知与互动”系列讲座。</li>
+        <li data-zh="国家社科基金评审专家、教育部重要人才计划评审专家、四川省及成都市哲社基金评审专家。" data-en="Reviewer for the National Social Science Fund, Ministry of Education talent programs, and Sichuan/Chengdu Philosophy and Social Science Funds.">国家社科基金评审专家、教育部重要人才计划评审专家、四川省及成都市哲社基金评审专家。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 招生寄语 ========== -->
+<section id="prospective">
+  <div class="container">
+    <h2 class="sec-title"><span data-zh="招生寄语" data-en="Prospective Students">招生寄语</span><span class="sec-title-en" data-zh="PROSPECTIVE STUDENTS" data-en="">PROSPECTIVE STUDENTS</span></h2>
+    <div class="note reveal">
+      <p data-zh="欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关的学科背景的海外名校博士申请逻辑学或科学技术哲学专业的博士后合作项目。欢迎具有上述相关学科背景、知识基础和能力特长的学生申请逻辑学或科学技术哲学专业的硕士或博士研究生项目。" data-en="Ph.D. graduates from top overseas universities with backgrounds in logic, analytic philosophy, mathematics, computer science, artificial intelligence, or cognitive science are welcome to apply for postdoctoral positions in Logic or Philosophy of Science and Technology. Students with the above disciplinary backgrounds, knowledge, and skills are also welcome to apply for M.A. or Ph.D. programs in Logic or Philosophy of Science and Technology.">欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关的学科背景的海外名校博士申请逻辑学或科学技术哲学专业的博士后合作项目。欢迎具有上述相关学科背景、知识基础和能力特长的学生申请逻辑学或科学技术哲学专业的硕士或博士研究生项目。</p>
+      <p data-zh="联系方式：xuzhaoqing@scu.edu.cn" data-en="Contact: xuzhaoqing@scu.edu.cn">联系方式：xuzhaoqing@scu.edu.cn</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© <span id="year"></span> <span data-zh="徐召清 · 四川大学哲学系" data-en="Xu Zhaoqing · Department of Philosophy, Sichuan University">徐召清 · 四川大学哲学系</span></div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- 主题切换 ---------- */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) root.dataset.theme = savedTheme;
+  const syncThemeIcon = () => themeBtn.textContent = root.dataset.theme === 'dark' ? '☀️' : '🌙';
+  syncThemeIcon();
+  themeBtn.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', root.dataset.theme);
+    syncThemeIcon();
+  });
+
+  /* ---------- 中英切换 ---------- */
+  const langBtn = document.getElementById('langBtn');
+  const TITLE_ZH = '徐召清 | 四川大学哲学系';
+  const TITLE_EN = 'Xu Zhaoqing | Department of Philosophy, Sichuan University';
+
+  function setLang(lang) {
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-zh]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+    document.title = lang === 'zh' ? TITLE_ZH : TITLE_EN;
+    langBtn.textContent = lang === 'zh' ? 'EN' : '中文';
+    localStorage.setItem('lang', lang);
+  }
+
+  langBtn.addEventListener('click', () => {
+    const cur = localStorage.getItem('lang') || 'zh';
+    setLang(cur === 'zh' ? 'en' : 'zh');
+  });
+
+  const savedLang = localStorage.getItem('lang');
+  if (savedLang === 'en') setLang('en');
+
+  /* ---------- 滚动淡入 ---------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
