@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
 html{
 font-size:130%;
@@ -43,7 +45,16 @@ font-size:130%;
   .nav-inner{
     display:flex;align-items:center;justify-content:space-between;height:56px;
   }
-  .logo{font-weight:700;font-size:.95rem;letter-spacing:1px;font-family:var(--serif);flex-shrink:0;margin-right:1rem}
+  .logo {
+    font-family: 'Zhi Mang Xing', "STXingkai", "华文行楷", cursive, serif;
+    font-size: 1.8rem;      /* 行书字体笔画细，需要稍微大一点，1.8rem 左右比较合适 */
+    font-weight: normal;    /* 行书不要加粗，否则会糊在一起 */
+    letter-spacing: 1px;
+    color: var(--accent);   /* 保持使用你的深蓝色主题 */
+    flex-shrink: 0;
+    margin-right: 1rem;
+    padding-top: 5px;       /* 行书字体的基线通常偏高，往下压一点能让它在导航栏里垂直居中 */
+  }
   .nav-links{
     display:flex;gap:.6rem;align-items:center;
     overflow-x:auto; /* 小屏幕横向滑动 */
@@ -87,14 +98,27 @@ font-size:130%;
   .hero{padding:40px 0 50px;border-bottom:1px solid var(--border)}
   .hero-profile{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.2rem}
   .hero-photo{
-    width:120px;height:120px;border-radius:50%;object-fit:cover;
-    border:3px solid var(--accent-light);box-shadow:var(--shadow);
-    flex-shrink:0;
+    width: 160px;        /* 稍微放宽一点 */
+    height: 210px;       /* 拉高，保留更多上下边缘的图片信息 */
+    border-radius: 12px; /* 从 50%（圆）改成 12px（圆角矩形） */
+    object-fit: cover;
+    border: 3px solid var(--accent-light);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
   }
   .hero-text{flex:1}
-  .hero-label{
-    font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:.6rem;
+  .hero-label {
+    font-family: "Ma Shan Zheng", "STKaiti", "KaiTi", serif; /* 换用毛笔楷书 */
+    font-size: 1rem; /* 字号保持小巧 */
+    letter-spacing: 1px; /* 字间距稍微收紧，两端对齐时更好看 */
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    
+    /* 核心技巧：两端对齐 */
+    display: block;
+    width: 65%; /* 确保占满容器宽度 */
+    text-align: justify; 
+    text-align-last: justify; /* 强制最后一行（也就是这一行）两端对齐 */
   }
   .hero h1{
     font-family:var(--serif);font-size:clamp(2rem,4.5vw,2.8rem);
@@ -190,7 +214,7 @@ font-size:130%;
 
 <nav>
   <div class="container nav-inner">
-    <div class="logo">徐召清</div>
+    <div class="logo">思考的罗盘</div>
     <div class="nav-links">
       <a href="#home" class="active" data-target="home" data-zh="主页" data-en="Home">主页</a>
       <a href="#experience" data-target="experience" data-zh="经历" data-en="Experience">经历</a>
@@ -213,12 +237,12 @@ font-size:130%;
       <div class="container">
         <div class="hero-profile">
           <img src="photo.jpg" alt="徐召清" class="hero-photo">
+
           <div class="hero-text">
-            <div class="hero-label" data-zh="四川大学哲学系" data-en="Department of Philosophy, Sichuan University">四川大学哲学系</div>
+         <div class="hero-label" data-zh="步入众妙之门   探索理性之道" data-en="Enter the Gate of Wonders, Explore the Way of Reason">步入众妙之门     探索理性之道</div>
             <h1>徐召清 <span>XU ZHAOQING</span></h1>
           </div>
         </div>
-        <p class="hero-sub" data-zh="四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师。研究聚焦于<strong>哲学逻辑、形式知识论、逻辑哲学</strong>与<strong>人工智能哲学</strong>。" data-en="<strong>Professor</strong>, Ph.D. Supervisor, and Postdoctoral Co-supervisor at the Department of Philosophy, Sichuan University</em>.  Research focuses on <strong>philosophical logic, formal epistemology, philosophy of logic, </strong>and <strong>philosophy of artificial intelligence</strong>. ">四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师。研究聚焦于<strong>哲学逻辑、形式知识论、逻辑哲学</strong>与<strong>人工智能哲学</strong>。</p>
         <div class="hero-contact">
           <span>✉️ <a href="mailto:xuzhaoqing@scu.edu.cn">xuzhaoqing@scu.edu.cn</a></span>
           <span>🔗 <a href="https://philpeople.org/profiles/zhaoqing-xu" target="_blank" rel="noopener">PhilPeople Profile</a></span>
@@ -231,9 +255,9 @@ font-size:130%;
       <div class="container">
         <h2 class="sec-title"><span data-zh="简介" data-en="About">简介</span><span class="sec-title-en" data-zh="ABOUT" data-en="">ABOUT</span></h2>
         <div class="bio reveal">
-          <p data-zh="徐召清，1985年生，四川资阳人。北京大学哲学学士，北京大学逻辑学专业哲学博士（硕博连读）。美国纽约市立大学和英国牛津大学访问学者。四川大学逻辑、科学与文化研究所执行所长，《逻辑与批判性思维》副主编。四川省海外高层次留学人才、四川省学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目、四川大学双百人才工程等人才项目入选者。主要学术兼职：中国逻辑学会常务理事；四川省逻辑学会代理会长。" data-en="Xu Zhaoqing (b. 1985, Ziyang, Sichuan) holds a B.A. in Philosophy and a Ph.D. in Logic from Peking University. He was a visiting scholar at the City University of New York and the University of Oxford. He is executive Director of the Institute of Logic, Science and Culture; Associate Editor of <em>Logic and Critical Thinking. He is a recipient of multiple talent programs, including Sichuan Provincial Overseas High-Level Talent, the Batch of Sichuan Provincial Academic and Technical Leaders, Tianfu Social Science Elite (Tianfu Qingcheng Program), Sichuan University Young Outstanding Talent Cultivation Program, and the 'Double Hundred' Talent Program at Sichuan University.  His major academic affiliations are Council Member of Chinese Logic Society and Acting President of Sichuan Logic Society.  ">徐召清，1985年生，四川资阳人。北京大学哲学学士，北京大学逻辑学专业哲学博士（硕博连读）。美国纽约市立大学和英国牛津大学访问学者。四川大学逻辑、科学与文化研究所执行所长，《逻辑与批判性思维》副主编。四川省海外高层次留学人才、四川省学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目、四川大学双百人才工程等人才项目入选者。主要学术兼职：中国逻辑学会常务理事；四川省逻辑学会代理会长。</p>
+          <p data-zh="我于1985年出生于四川资阳，在北京大学获得哲学学士和逻辑学博士学位（硕博连读），并曾赴美国纽约市立大学和英国牛津大学访学。现任四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师，兼任四川大学逻辑、科学与文化研究所执行所长、《逻辑与批判性思维》副主编。我入选了四川省海外高层次留学人才、四川省学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目及双百人才工程等人才计划。主要学术兼职包括中国逻辑学会常务理事、四川省逻辑学会代理会长。" data-en="I was born in 1985 in Ziyang, Sichuan. I received my B.A. in Philosophy and my Ph.D. in Logic (combined M.A.-Ph.D. program) from Peking University, and was a visiting scholar at the City University of New York and the University of Oxford. I am currently a <strong>Professor</strong>, Ph.D. Supervisor, and Postdoctoral Co-supervisor at the Department of Philosophy, Sichuan University, as well as the Executive Director of the Institute of Logic, Science and Culture, and Associate Editor of <em>Logic and Critical Thinking</em>. I am a recipient of multiple talent programs, including Sichuan Provincial Overseas High-Level Talent, the Batch of Sichuan Provincial Academic and Technical Leaders, Tianfu Social Science Elite (Tianfu Qingcheng Program), Sichuan University Young Outstanding Talent Cultivation Program, and the 'Double Hundred' Talent Program at Sichuan University. My major academic affiliations include Council Member of the Chinese Logic Society and Acting President of the Sichuan Logic Society.">我于1985年出生于四川资阳，在北京大学获得哲学学士和逻辑学博士学位（硕博连读），并曾赴美国纽约市立大学和英国牛津大学访学。现任四川大学哲学系<strong>教授</strong>、博士生导师、博士后合作导师，兼任四川大学逻辑、科学与文化研究所执行所长、《逻辑与批判性思维》副主编。我入选了四川省海外高层次留学人才、四川省学术和技术带头人后备人选、四川省“天府青城计划”天府社科菁英、四川大学青年杰出人才培育项目及双百人才工程等人才计划。主要学术兼职包括中国逻辑学会常务理事、四川省逻辑学会代理会长。</p>
 
-     <p data-zh="近期研究兴趣：（1）知识优先认识论的哲学逻辑基础、跨学科应用与跨文化反思；（2）比较逻辑学视域下的逻辑与元逻辑关系；（3）当代逻辑与人工智能哲学前沿问题；（4）基于概率的不确定性推理及其应用；（5）具身人工智能的认知科学哲学基础。"   data-en="Research Interests: (1) The philosophical logical foundation, interdisciplinary applications and cross-cultural reflections of knowledge-first epistemology; (2) The relationship between logic and metalogic from the perspective of comparative logic; (3) Frontier issues in contemporary logic and philosophy of artificial intelligence; (4) Probability-based uncertain reasoning and its applications; (5) The philosophical foundation of cognitive science for embodied artificial intelligence.">近期研究兴趣：（1）知识优先认识论的哲学逻辑基础、跨学科应用与跨文化反思；（2）比较逻辑学视域下的逻辑与元逻辑关系；（3）当代逻辑与人工智能哲学前沿问题；（4）基于概率的不确定性推理及其应用；（5）具身人工智能的认知科学哲学基础。</p>
+<p data-zh="我的主要研究领域为<strong>哲学逻辑、形式知识论、逻辑哲学与人工智能哲学</strong>。近期研究兴趣包括：（1）知识优先认识论的哲学逻辑基础、跨学科应用与跨文化反思；（2）比较逻辑学视域下的逻辑与元逻辑关系；（3）当代逻辑与人工智能哲学前沿问题；（4）基于概率的不确定性推理及其应用；（5）具身人工智能的认知科学哲学基础。" data-en="My research fields are <strong>philosophical logic, formal epistemology, philosophy of logic, and philosophy of artificial intelligence</strong>. My recent research interests include: (1) The philosophical logical foundation, interdisciplinary applications, and cross-cultural reflections of knowledge-first epistemology; (2) The relationship between logic and metalogic from the perspective of comparative logic; (3) Frontier issues in contemporary logic and philosophy of artificial intelligence; (4) Probability-based uncertain reasoning and its applications; (5) The philosophical foundation of cognitive science for embodied artificial intelligence.">我的主要研究领域为<strong>哲学逻辑、形式知识论、逻辑哲学与人工智能哲学</strong>。近期研究兴趣包括：（1）知识优先认识论的哲学逻辑基础、跨学科应用与跨文化反思；（2）比较逻辑学视域下的逻辑与元逻辑关系；（3）当代逻辑与人工智能哲学前沿问题；（4）基于概率的不确定性推理及其应用；（5）具身人工智能的认知科学哲学基础。</p>
       </div>
       </div>
     </section>
@@ -242,7 +266,7 @@ font-size:130%;
       <div class="container">
         <h2 class="sec-title"><span data-zh="招生寄语" data-en="Prospective Students">招生寄语</span><span class="sec-title-en" data-zh="PROSPECTIVE STUDENTS" data-en="">PROSPECTIVE STUDENTS</span></h2>
         <div class="note reveal">
-          <p data-zh="欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关的学科背景的海外名校博士申请逻辑学或科学技术哲学专业的博士后合作项目。欢迎具有上述相关学科背景、知识基础和能力特长的学生申请逻辑学或科学技术哲学专业的博士或硕士研究生项目。" data-en="Ph.D. graduates from top overseas universities with backgrounds in logic, analytic philosophy, mathematics, computer science, artificial intelligence, or cognitive science are welcome to apply for postdoctoral positions in Logic or Philosophy of Science and Technology. Students with the above disciplinary backgrounds, knowledge, and skills are also welcome to apply for Ph.D. or M.A. programs in Logic or Philosophy of Science and Technology.">欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关的学科背景的海外名校博士申请逻辑学或科学技术哲学专业的博士后合作项目。欢迎具有上述相关学科背景、知识基础和能力特长的学生申请逻辑学或科学技术哲学专业的博士或硕士研究生项目。</p>
+          <p data-zh="我非常欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关学科背景的海外名校博士，申请逻辑学或科学技术哲学专业的博士后合作项目。同时，我也非常欢迎具有上述背景、知识基础和能力特长的同学，申请我的硕士或博士研究生项目。" data-en="I warmly welcome Ph.D. graduates from top overseas universities with backgrounds in logic, analytic philosophy, mathematics, computer science, artificial intelligence, or cognitive science to apply for postdoctoral positions in Logic or Philosophy of Science and Technology. I also welcome students with the above disciplinary backgrounds, knowledge, and skills to apply for Ph.D. or M.A. programs under my supervision.">我非常欢迎具有逻辑学、分析哲学、数学、计算机、人工智能和认知科学等相关学科背景的海外名校博士，申请逻辑学或科学技术哲学专业的博士后合作项目。同时，我也非常欢迎具有上述背景、知识基础和能力特长的同学，申请我的博士或硕士研究生项目。</p>
 
         </div>
       </div>
@@ -276,24 +300,24 @@ font-size:130%;
 
   <!-- ================= 3. 研究 ================= -->
   <div class="page-section" id="research">
-    <section>
+        <section>
       <div class="container">
         <h2 class="sec-title"><span data-zh="研究" data-en="Research">研究</span><span class="sec-title-en" data-zh="RESEARCH" data-en="">RESEARCH</span></h2>
         <div class="research-item reveal">
           <h3><span data-zh="哲学逻辑" data-en="Philosophical Logic">哲学逻辑</span> <span data-zh="Philosophical Logic" data-en="">Philosophical Logic</span></h3>
-          <p data-zh="以模态逻辑、认知逻辑与二维语义学为主要工具，处理知识、信念、必然性等基本哲学概念的逻辑结构。代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。" data-en="Using modal logic, epistemic logic, and two-dimensional semantics to analyze the logical structure of knowledge, belief, and necessity. Representative work addresses Kripke's puzzle about belief, the surprise examination paradox, and the nesting problem of two-dimensional semantics.">以模态逻辑、认知逻辑与二维语义学为主要工具，处理知识、信念、必然性等基本哲学概念的逻辑结构。代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。</p>
+          <p data-zh="我主要以模态逻辑、认知逻辑与二维语义学为工具，分析知识、信念、必然性等基本哲学概念的逻辑结构。我的代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。" data-en="I primarily use modal logic, epistemic logic, and two-dimensional semantics to analyze the logical structure of fundamental philosophical concepts such as knowledge, belief, and necessity. My representative work addresses Kripke's puzzle about belief, the surprise examination paradox, and the nesting problem of two-dimensional semantics.">我主要以模态逻辑、认知逻辑与二维语义学为工具，分析知识、信念、必然性等基本哲学概念的逻辑结构。我的代表性工作涉及克里普克的信念之谜、意外考试悖论以及二维语义学的嵌套问题。</p>
         </div>
         <div class="research-item reveal">
           <h3><span data-zh="形式知识论" data-en="Formal Epistemology">形式知识论</span> <span data-zh="Formal Epistemology" data-en="">Formal Epistemology</span></h3>
-          <p data-zh="聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限，并从“可错性”出发为理解知识的基始性与认知边界提供替代性分析框架。" data-en="Focusing on the limits of knowledge and cognitive transparency, particularly the limitations of the 'cognitive transparency' argument in Williamson's epistemology, and proposing an alternative framework based on fallibility to understand the foundational status and boundaries of knowledge.">聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限，并从“可错性”出发为理解知识的基始性与认知边界提供替代性分析框架。</p>
+          <p data-zh="我聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限。我试图从“可错性”出发，为理解知识的基始性与认知边界提供替代性分析框架。" data-en="I focus on the limits of knowledge and cognitive transparency, particularly the limitations of the 'cognitive transparency' argument in Williamson's epistemology. I attempt to propose an alternative analytical framework based on fallibility to understand the foundational status and boundaries of knowledge.">我聚焦于知识的限度与认知透明性问题，尤其关注威廉姆森知识理论中“认知透明性”论证的局限。我试图从“可错性”出发，为理解知识的基始性与认知边界提供替代性分析框架。</p>
         </div>
         <div class="research-item reveal">
           <h3><span data-zh="逻辑哲学" data-en="Philosophy of Logic">逻辑哲学</span> <span data-zh="Philosophy of Logic" data-en="">Philosophy of Logic</span></h3>
-          <p data-zh="考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。" data-en="Examining the normative foundations of logic, the meaning of logical constants, and the relationship between logic and rational action, with attention to key turning points in the history of logic and the application and reflection of logical methods in the analytic tradition.">考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。</p>
+          <p data-zh="我主要考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。" data-en="I examine the normative foundations of logic, the meaning of logical constants, and the relationship between logic and rational action. I am also interested in key turning points in the history of logic and the application and reflection of logical methods in the analytic tradition.">我主要考察逻辑的规范性基础、逻辑常项的意义以及逻辑与理性行动之间的关系，同时关注逻辑思想史中的关键转折与分析哲学传统中逻辑方法的应用与反思。</p>
         </div>
         <div class="research-item reveal">
-          <h3><span data-zh="人工智能哲学" data-en="Philosophy of Artificial Intelligence">人工智能哲学</span> <span data-zh="Philosophy of AI" data-en="">Philosophy of AI</span></h3>
-          <p data-zh="将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与人工智能的交叉地带开展探索性研究。" data-en="Extending insights from formal epistemology to the cognitive transparency of artificial intelligence, exploring the fallibility, explainability, and philosophical presuppositions of machine cognition at the intersection of logic and artificial intelligence.">将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与AI的交叉地带开展探索性研究。</p>
+          <h3><span data-zh="人工智能哲学" data-en="Philosophy of AI">人工智能哲学</span> <span data-zh="Philosophy of AI" data-en="">Philosophy of AI</span></h3>
+          <p data-zh="我将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与AI的交叉地带开展探索性研究。" data-en="I extend insights from formal epistemology to the cognitive transparency of AI, exploring the fallibility, explainability, and philosophical presuppositions of machine cognition at the intersection of logic and AI.">我将形式知识论的洞见延伸至人工智能的认知透明性问题，探讨机器认知的可错性、可解释性及其哲学预设，在逻辑与AI的交叉地带开展探索性研究。</p>
         </div>
       </div>
     </section>
